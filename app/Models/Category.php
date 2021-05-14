@@ -4,15 +4,28 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+
 
 
 class Category extends Model
 {
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+    use HasSlug;
 
-    //создаем связь таблицы категорий с табл постами
-    public function posts() {
-
-        //hasMany - связь один к многим (одна категория может содержать много постов но не наоборот)
-        return $this->hasMany( Post::class);
+    /**
+     * Get the options for generating the slug.
+     */
+    protected $fillable = ['title'];//мы разрешаем вносить поле тайт через http запрос
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug')
+            ->doNotGenerateSlugsOnUpdate();
     }
 }
