@@ -211,13 +211,36 @@
                             <li class="nav-item">
                                 <a href="{{route('admin.categories.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>List</p>
+                                    <p>All Category</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('admin.categories.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>New Category</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item categ">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                Tags
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('admin.tags.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Tags</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('admin.tags.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>New Tag</p>
                                 </a>
                             </li>
                         </ul>

@@ -15,10 +15,12 @@ class Tag extends Model
         //belongsToMany - многие ко многим (один пост может содержать много тегов и наоборот)
         return $this->belongsToMany(Post::class);
     }
+    protected $fillable = ['title'];//мы разрешаем вносить поле тайт через http запрос
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug');
+            ->saveSlugsTo('slug')
+            ->doNotGenerateSlugsOnUpdate();
     }
 }
