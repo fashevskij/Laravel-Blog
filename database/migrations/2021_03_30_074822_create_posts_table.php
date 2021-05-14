@@ -16,7 +16,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');//уникальный айди
             $table->string('title');//тайтл
-            $table->string('slug');//уникальное слово описывающее строку аналог тайтла для строки url
+            $table->string('slug')->unique();//уникальное слово описывающее строку аналог тайтла для строки url
             $table->text('description');//краткое описание
             $table->text('content');//контент
             $table->integer('category_id',false,true);//связь категорий с постом /не автоинкр/ целое число без разделителей

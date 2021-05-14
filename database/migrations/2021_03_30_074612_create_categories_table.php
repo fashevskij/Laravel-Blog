@@ -16,7 +16,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');//уникальный айди
             $table->string('title');//тайтл
-            $table->string('slug');//уникальное слово описывающее строку аналог тайтла для строки url
+            $table->string('slug')->unique();//уникальное слово описывающее строку аналог тайтла для строки url
             $table->timestamps();
         });
     }

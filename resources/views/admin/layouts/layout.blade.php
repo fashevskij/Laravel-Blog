@@ -25,6 +25,9 @@
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="#" class="nav-link">Contact</a>
             </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="#" class="nav-link">Categories</a>
+            </li>
         </ul>
 
         <!-- Right navbar links -->
@@ -196,37 +199,25 @@
                         </a>
 
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item categ">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-chart-pie"></i>
                             <p>
-                                Charts
+                                Categories
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="../charts/chartjs.html" class="nav-link">
+                                <a href="{{route('admin.categories.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>ChartJS</p>
+                                    <p>List</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="../charts/flot.html" class="nav-link">
+                                <a href="{{route('admin.categories.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Flot</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../charts/inline.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Inline</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../charts/uplot.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>uPlot</p>
+                                    <p>New Category</p>
                                 </a>
                             </li>
                         </ul>
@@ -257,6 +248,15 @@
 </div>
 <!-- ./wrapper -->
 <script src="{{asset('/assets/admin/js/admin.js')}}"></script>
-
+<script>
+    $('.nav-sidebar a').each(function () {
+        let location = window.location.protocol + '//' + window.location.host + window.location.pathname;
+        let link = this.href;
+        if(link == location) {
+            $(this).addClass('active');
+            $(this).closest('.categ').addClass('menu-open');
+        }
+    });
+</script>
 </body>
 </html>
