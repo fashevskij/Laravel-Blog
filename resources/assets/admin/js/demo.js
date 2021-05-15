@@ -683,4 +683,16 @@
     $brand_variants.find('option.' + active_brand_color).prop('selected', true)
     $brand_variants.removeClass().addClass('custom-select mb-3 text-light border-0 ').addClass(active_brand_color)
   }
+    $(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+    });
+    $('.nav-sidebar a').each(function () {
+        let location = window.location.protocol + '//' + window.location.host + window.location.pathname;
+        let link = this.href;
+        if(link == location) {
+            $(this).addClass('active');
+            $(this).closest('.categ').addClass('menu-open');
+        }
+    });
 })(jQuery)

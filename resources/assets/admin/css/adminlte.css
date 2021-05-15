@@ -52415,4 +52415,7 @@ a.text-muted:hover {
 .dark-mode .dark-mode.accent-gray-dark .page-item .page-link:hover, .dark-mode .dark-mode.accent-gray-dark .page-item .page-link:focus {
   color: #3f474e;
 }
+.select2-selection__choice{
+    background-color: #0c5460 !important;
+}
 /*# sourceMappingURL=adminlte.css.map */

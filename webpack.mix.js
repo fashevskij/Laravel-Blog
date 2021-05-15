@@ -14,7 +14,8 @@ const mix = require('laravel-mix');
 mix.styles([
     //то откуда забираем
     'resources/assets/admin/plugins/fontawesome-free/css/all.css',
-    'resources/assets/admin/css/adminlte.css'
+    'resources/assets/admin/css/adminlte.css',
+    'resources/assets/admin/css/select2.min.css',
 ], 'public/assets/admin/css/admin.css');//куда положить минифицированные файлы стилей (в один файл)
 //создание сборки с помощью вебпак для js файлов
 mix.scripts([
@@ -22,6 +23,7 @@ mix.scripts([
     'resources/assets/admin/plugins/jquery/jquery.js',
     'resources/assets/admin/plugins/bootstrap/js/bootstrap.js',
     'resources/assets/admin/js/adminlte.js',
+    'resources/assets/admin/js/select2.full.min.js',
     'resources/assets/admin/js/demo.js'
 ], 'public/assets/admin/js/admin.js');//куда положить минифицированные файлы js файлов (в один файл)
 
