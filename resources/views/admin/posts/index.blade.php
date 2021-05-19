@@ -48,6 +48,7 @@
                             <th>Name</th>
                             <th>category</th>
                             <th>tags</th>
+                            <th>img</th>
                             <th>date</th>
                             <th style="width: 150px">Action</th>
                         </tr>
@@ -58,8 +59,19 @@
                             <td>{{$post->id}}</td>
                             <td>{{$post->title}}</td>
                             <td>{{$post->category->title}}</td>
-                            <td>{{$post->tags}}</td>
-                            <td>{{$post->crated_at}}</td>
+
+                            <td>
+                                {{$post->tags->pluck('title')->join(' , ')}}
+                               {{-- @foreach($post->tags as $tag)
+                                {{$tag->title}}<br>
+                                @endforeach--}}
+                            </td>
+                                <td>
+                                    <div class="text-center">
+                                        <img class="profile-user-img img-fluid img-circle"  src="{{$post->getImg()}}" alt="" >
+                                    </div>
+                                </td>
+                            <td>{{$post->created_at}}</td>
                             <td><a  href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-info float-left"> <i class="fas fa-edit"></i></a>
                                 <form action="{{route('admin.posts.destroy',  $post->id)}}" method="post" class="float-left">
                                     @csrf

@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form role="form" method="POST" action="{{route('admin.posts.store')}}">
+                <form role="form" method="POST" enctype="multipart/form-data" action="{{route('admin.posts.store')}}">
                     @csrf
                     <div class="card-body">
                         <div class="form-group col-sm-6">
@@ -74,7 +74,7 @@
                         <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="tag_id">Tags</label>
-                                    <select name="tag_id" id="tag_id" class="select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                                    <select name="tag_id[]" id="tag_id" class="select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
                                         @foreach($tags as $id=>$title)
                                             <option value="{{$id}}">{{$title}}</option>
                                         @endforeach
@@ -84,15 +84,15 @@
                         <!-- /.col -->
                         </div>
                         <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="thumbnail">Image</label>
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="thumbnail" id="thumbnail" >
-                                    <label class="custom-file-label" for="thumbnail" ></label>
+                            <div class="form-group">
+                                <label for="img">Image</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="img" name="img">
+                                        <label class="custom-file-label" for="img">Choose file</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div> <!-- /.form-group -->
                         </div>
                     </div>
                     <!-- /.card-body -->

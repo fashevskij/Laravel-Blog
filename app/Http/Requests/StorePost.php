@@ -21,14 +21,15 @@ class StorePost extends FormRequest
      *
      * @return array
      */
-    public function rules()//сохдаем валидацию для категорий
+    public function rules()////валидация для создания постов
     {
+
         return [
-            'title'=>'required',
-            'description'=>'required',
-            'content'=>'required',
-            'category_id'=>'required',
-            'tag_id'=>'required',
+            'title' => 'required',
+            'description' => 'required',
+            'content' => 'required',
+            'category_id' => 'required|integer',
+            'img' => 'nullable|image',
         ];
     }
 }
