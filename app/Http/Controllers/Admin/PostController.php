@@ -21,8 +21,8 @@ class PostController extends Controller
      */
     public function index()
     {
-
-        $posts = Post::query()->paginate(10);//создаем массив категорий
+        //with('category','tags') - вытащили cвязь категорий и тегов
+        $posts = Post::query()->with('category','tags')->paginate(10);//создаем массив категорий
         return view('admin.posts.index', compact('posts'));//возвращаем вид и передаем в него категории
     }
 

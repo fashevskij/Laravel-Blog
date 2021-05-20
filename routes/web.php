@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +19,7 @@ use App\Http\Controllers\Admin\TagController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 //группа роутов для админки
 //prefix - сокращение путей (автоматом доабвление admin перед путем)
 //name - имя группы , в данном примере admin. и для обращения к именам внутри группы можно исп аdmin.index например
@@ -28,3 +29,6 @@ Route::prefix('admin')->name('admin.')->group(function (){
     Route::resource('/tags', TagController::class);
     Route::resource('/posts', PostController::class);
 });
+
+Route::get('/register',[UserController::class,'create'])->name('register.create');//маршрут для показа формі регистрации
+Route::post('/register',[UserController::class,'store'])->name('register.store');//маршрут для передачи формі
