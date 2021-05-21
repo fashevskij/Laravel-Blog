@@ -32,3 +32,6 @@ Route::prefix('admin')->name('admin.')->group(function (){
 
 Route::get('/register',[UserController::class,'create'])->name('register.create');//маршрут для показа формі регистрации
 Route::post('/register',[UserController::class,'store'])->name('register.store');//маршрут для передачи формі
+
+Route::get('/login',[UserController::class,'login'])->name('login.login');//маршрут для показа формі регистрации
+Route::post('/login',[UserController::class,'loginstore'])->name('login.loginstore');//маршрут для передачи формі
