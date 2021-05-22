@@ -35,9 +35,9 @@
                     @endauth
                 </div>
             @endif
-                @if (session()->has('flashText'))
+                @if(session()->has('text'))
                     <div class="alert alert-danger">
-                        {{session('flashText')}}
+                    {{session('text')}}
                     </div>
                 @endif
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">

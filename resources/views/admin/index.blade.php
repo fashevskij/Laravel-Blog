@@ -4,7 +4,11 @@
 @extends('admin.layouts.layout')
 
 @section('content')
-
+@if(session()->has('text'))
+    <div class="alert alert-danger">
+    {{session('text')}}
+    </div>
+    @endif
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">

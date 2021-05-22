@@ -20,6 +20,11 @@
         </ul>
     </div>
 @endif
+@if(session()->has('error'))
+    <div class="alert alert-danger">
+    {{session('error')}}
+    </div>
+    @endif
 <div class="register-box">
     <div class="register-logo">
         <a href="#"><b>Login</b></a>
@@ -50,6 +55,7 @@
                 <div class="col-4">
                     <button type="submit" class="btn btn-primary btn-block">Login</button>
                 </div>
+                <a href="{{route('register.create')}}" class="text-center">I not have a membership</a>
             </form>
         </div>
         <!-- /.form-box -->

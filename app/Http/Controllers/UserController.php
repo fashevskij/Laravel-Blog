@@ -39,16 +39,21 @@ class UserController extends Controller
         if (Auth::attempt([
             'email' => $request->email,
             'password' => $request->password, ])) {
-            session()->flash('flashText','Пользователь успешено залогинился');
-            return redirect()->home();  //если все ок то переходим на главную
+            if (Auth::user()->is_admin){//проверяем поле is_admin в талице юзер
+                //чтобы не попали обычные пользователи делаем проверку через посредника adminMeddleware
+                return redirect()->route('admin.index')->with('text','hi admin');//перенапрявляем в админку
+            }else{
+                return redirect()->home()->with('text','hi user');  //если все ок то переходим на главную
+            }
+
         }else{//если нет
             //переходим на страницу входа и выводим сообщение
             return redirect()->route('login.login')->with('error','не правельный логин или пароль');
         }
     }
-/*
+
     public function logout() {
         Auth::logout();//выход авторизованного пользователя
         return redirect()->route('login.login');//переходим на страницу входа
-    }*/
+    }
 }

@@ -68,7 +68,7 @@
                         <button type="submit" class="btn btn-primary btn-block">Register</button>
                     </div>
                     <!-- /.col -->
-                    <a href="#" class="text-center">I already have a membership</a>
+                    <a href="{{route('login.login')}}" class="text-center">I already have a membership</a>
                 </div>
             </form>
 

@@ -23,15 +23,20 @@ Route::get('/', function () {
 //группа роутов для админки
 //prefix - сокращение путей (автоматом доабвление admin перед путем)
 //name - имя группы , в данном примере admin. и для обращения к именам внутри группы можно исп аdmin.index например
-Route::prefix('admin')->name('admin.')->group(function (){
+Route::prefix('admin')->middleware('admin')->name('admin.')->group(function (){
     Route::get('/',[MainController::class, 'index'])->name('index');
     Route::resource('/categories', CategoryController::class);
     Route::resource('/tags', TagController::class);
     Route::resource('/posts', PostController::class);
 });
+//middleware('guest') посредник с проверкой что пользователь не авторизован
+Route::middleware('guest')->group(function (){
+    Route::get('/register',[UserController::class,'create'])->name('register.create');//маршрут для показа формі регистрации
+    Route::post('/register',[UserController::class,'store'])->name('register.store');//маршрут для передачи формі
+    Route::get('/login',[UserController::class,'login'])->name('login.login');//маршрут для показа формі регистрации
+    Route::post('/login',[UserController::class,'loginstore'])->name('login.loginstore');//маршрут для передачи формі
+});
 
-Route::get('/register',[UserController::class,'create'])->name('register.create');//маршрут для показа формі регистрации
-Route::post('/register',[UserController::class,'store'])->name('register.store');//маршрут для передачи формі
 
-Route::get('/login',[UserController::class,'login'])->name('login.login');//маршрут для показа формі регистрации
-Route::post('/login',[UserController::class,'loginstore'])->name('login.loginstore');//маршрут для передачи формі
+//middleware('auth') посредник с проверкой авторизован ли пользователь
+Route::get('/logout',[UserController::class,'logout'])->name('login.logout')->middleware('auth');//маршрут для показа формі регистрации
