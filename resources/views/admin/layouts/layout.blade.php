@@ -228,6 +228,80 @@
 </div>
 <!-- ./wrapper -->
 <script src="{{asset('/assets/admin/js/admin.js')}}"></script>
+<script src="{{asset('/assets/admin/ckeditor5/build/ckeditor.js')}}"></script>
+<script src="{{asset('/assets/admin/ckfinder/ckfinder.js')}}"></script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#content' ), {
+
+            ckfinder: {
+                uploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+            },
+            toolbar: {
+                items: [
+                    'image',
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'link',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'outdent',
+                    'indent',
+                    'alignment',
+                    '|',
+                    'blockQuote',
+                    'insertTable',
+                    'mediaEmbed',
+                    'CKFinder',
+                    'undo',
+                    'redo'
+                ]
+            },
+            language: 'en',
+            image: {
+                toolbar: [
+                    'imageTextAlternative',
+                    'imageStyle:full',
+                    'imageStyle:side'
+                ]
+            },
+            table: {
+                contentToolbar: [
+                    'tableColumn',
+                    'tableRow',
+                    'mergeTableCells'
+                ]
+            },
+        } )
+        .then( editor => {
+            window.editor = editor;
+            Array.from( editor.ui.componentFactory.names() );
+
+
+
+
+
+
+        } )
+        .catch( function( error ) {
+            console.error( error );
+        } );
+
+    ClassicEditor
+        .create( document.querySelector( '#description' ), {
+            ckfinder: {
+                uploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+            },
+            toolbar: ['heading', '|', 'bold', 'italic', '|', 'undo', 'redo' ]
+        } )
+        .catch( function( error ) {
+            console.error( error );
+        } );
+
+</script>
 
 </body>
 </html>
