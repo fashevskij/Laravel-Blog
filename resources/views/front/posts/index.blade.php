@@ -15,10 +15,10 @@
         @foreach($posts as $post)
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
             <figure class="effect-ming tm-video-item">
-                <img src="{{asset('assets/front/img/img-03.jpg')}}" alt="Image" class="img-fluid">
+                <img src="{{asset('upload/'.$post->img)}}" alt="Image" class="img-fluid">
                 <figcaption class="d-flex align-items-center justify-content-center">
                     <h2>{{$post->title}}</h2>
-                    <a href="{{route('post.single')}}">View more</a>
+                    <a href="{{route('post.single', $post->id)}}">View more</a>
                 </figcaption>
             </figure>
             <div class="d-flex justify-content-between tm-text-gray">
@@ -28,18 +28,6 @@
         </div>
         @endforeach
     </div> <!-- row -->
-    {{$posts->links()}}
-    <div class="row tm-mb-90">
-        <div class="col-12 d-flex justify-content-between align-items-center tm-paging-col">
-            <a href="javascript:void(0);" class="btn btn-primary tm-btn-prev mb-2 disabled">Previous</a>
-            <div class="tm-paging d-flex">
-                <a href="javascript:void(0);" class="active tm-paging-link">1</a>
-                <a href="javascript:void(0);" class="tm-paging-link">2</a>
-                <a href="javascript:void(0);" class="tm-paging-link">3</a>
-                <a href="javascript:void(0);" class="tm-paging-link">4</a>
-            </div>
-            <a href="javascript:void(0);" class="btn btn-primary tm-btn-next">Next Page</a>
-        </div>
-    </div>
+    {{$posts->links('vendor.pagination.blog-post')}}
 </div> <!-- container-fluid, tm-container-content -->
 @endsection

@@ -17,9 +17,8 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [\App\Http\Controllers\PostController::class, 'index'])->name('post.home');
+Route::get('/single/{id}', [\App\Http\Controllers\PostController::class, 'show'])->name('post.single');
 //группа роутов для админки
 //prefix - сокращение путей (автоматом доабвление admin перед путем)
 //name - имя группы , в данном примере admin. и для обращения к именам внутри группы можно исп аdmin.index например
