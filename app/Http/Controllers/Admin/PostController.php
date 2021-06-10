@@ -80,7 +80,7 @@ class PostController extends Controller
     public function update(StorePost $request, $id)
     {
         $post= Post::query()->find($id);//находим в таблице строку с постом по айди
-        $data = $request->all();
+        $data = $request->all();//ложим в дата все что передано post запросом
         $data['img'] = Post::uploadImg($request, $post->img);//вызываем метод модели поста с доп параметром пути к картинки для удаления
 
         $post->update($data);//обновляем все данніе в посте

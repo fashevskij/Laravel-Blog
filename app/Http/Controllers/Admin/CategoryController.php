@@ -79,11 +79,16 @@ class CategoryController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Category::destroy($id);//удаляем пост
+        $category = Category::query()->find($id);
+        $post_count = $category->posts->count();
+        if($post_count){
+            return  redirect()->route('admin.categories.index')->with('error',"category $category->title  make $post_count posts");
+        }
+        $category->delete();
         return redirect()->route('admin.categories.index')->with('success', 'category delete');
     }
 }

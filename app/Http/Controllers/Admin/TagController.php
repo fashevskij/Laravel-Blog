@@ -79,11 +79,16 @@ class TagController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
     {
-        Tag::destroy($id);//удаляем пост
+        $tags = Tag::query()->find($id);
+        $tags_count = $tags->posts->count();
+        if ($tags_count){
+            return redirect()->route('admin.tags.index')->with('error',"tags $tags->title make $tags_count posts");
+        }
+        $tags->delete();
         return redirect()->route('admin.tags.index')->with('success', 'tag delete');
     }
 }

@@ -20,15 +20,7 @@
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{route('admin.index')}}" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Categories</a>
-            </li>
+
         </ul>
 
         <!-- Right navbar links -->
@@ -78,7 +70,7 @@
                     <img src="{{asset('assets/admin/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="#" class="d-block">Admin</a>
                 </div>
             </div>
 
@@ -184,28 +176,7 @@
         <!-- /.sidebar -->
     </aside>
     <div class="content-wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul class="list-unstyled">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                        @if (session()->has('success'))
-                            <div class="alert alert-success">
-                                <ul class="list-unstyled">
-                                    {{session('success')}}
-                                </ul>
-                            </div>
-                        @endif
-                </div>
-            </div>
-        </div>
+@include('admin.layouts.alert')
 
         @yield('content')
     </div>
@@ -301,6 +272,9 @@
             console.error( error );
         } );
 
+    $(function () {
+        bsCustomFileInput.init();
+    });
 </script>
 
 </body>
