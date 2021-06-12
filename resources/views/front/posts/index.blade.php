@@ -20,12 +20,12 @@
                 </figcaption>
             </figure>
             <div class="tm-text-gray">
-                <p class="tm-text-gray-light">{{$post->created_at}}</p>
+                <p class="tm-text-gray-light">{{$post->getPostDate()}}</p>
                 <a href="#">{{$post->category->title}}</a>
                 @foreach($post->tags as $tag)
                 <a href="">{{$tag->title}}</a>|
                 @endforeach
-                <p>9,906 views</p>
+                <p>{{$post->views}} views</p>
             </div>
         </div>
         @endforeach

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Http\Requests\StorePost;
+use Carbon\Carbon;
 use http\Env\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -54,5 +55,10 @@ class Post extends Model
             return asset('no-image-02.png');//то вернем путь к но имг
         }
         return asset("upload/$this->img");//или получем путь что есть в базе
+    }
+
+    public function getPostDate() {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format(
+            'd F Y');
     }
 }

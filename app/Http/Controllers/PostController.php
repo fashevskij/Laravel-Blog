@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use mysql_xdevapi\TableUpdate;
 
 class PostController extends Controller
 {
@@ -22,8 +23,9 @@ class PostController extends Controller
 
     public function show($slug)
     {
-        $post = Post::query()->where('slug', '=', $slug)->first();
-
+        $post = Post::query()->where('slug', '=', $slug)->first();//получаем пост на который кликнули
+        $post->views +=1;//к просмотру добавляем единицу
+        $post->save();//сохраняем изменения
         return view('front.posts.single', compact('post'));
     }
 
