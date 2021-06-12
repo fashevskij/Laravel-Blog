@@ -10,14 +10,48 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class PostController extends Controller
 {
-  public function index() {
-      //with('category','tags') - вытащили cвязь категорий и тегов
-      $posts = Post::query()->with('category','tags')->paginate(10);//создаем массив категорий
-        return view('front.posts.index',compact('posts'));
+    public function index()
+    {
+        //with('category','tags') - вытащили cвязь категорий и тегов
+        $posts = Post::query()->with(['category', 'tags'])->paginate(2);//создаем массив категорий
+        $categories = Category::all();
+        $tags = Tag::all();
+
+        return view('front.posts.index', compact(['posts', 'categories', 'tags']));
     }
 
-    public function show($id) {
-        $post = Post::query()->find($id);
-      return view('front.posts.single', compact('post'));
+    public function show($slug)
+    {
+        $post = Post::query()->where('slug', '=', $slug)->first();
+
+        return view('front.posts.single', compact('post'));
     }
+
+    public function category($slug)
+    {
+        $category = Category::query()->where('slug', '=', $slug)->first();
+       /* $category_id = null;
+        foreach ($category->pluck('id')->all() as $id) {
+            $category_id = $id;
+        }*/
+        $categories = Category::all();
+        $tags = Tag::all();
+        $posts = Post::query()->where('category_id', '=', $category->id)->paginate(2);
+        return view('front.posts.index', compact(['posts', 'categories', 'tags']));
+    }
+
+    public function tags($slug)
+    {
+     /*   $tag_id = Tag::query()->where('slug', '=', $slug)->first()->id;
+
+        $post_id = Post::query()->getRelation('tags')->where('tag_id', '=', $tag_id)->get();*/
+        $categories = Category::all();
+        $tags = Tag::all();
+        $tag = Tag::query()->where('slug', $slug)->first();
+        $posts = $tag->posts()->where('tag_id', $tag->id)->paginate(2);
+        return view('front.posts.index', compact(['posts', 'categories', 'tags']));
+
+    }
+
+
 }

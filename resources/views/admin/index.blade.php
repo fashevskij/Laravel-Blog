@@ -10,7 +10,7 @@
     </div>
     @endif
         <!-- Content Header (Page header) -->
-        <section class="content-header">
+        <section class="content-header content-wrapper">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
@@ -26,10 +26,10 @@
         </section>
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content content-wrapper">
 
             <!-- Default box -->
-            <div class="card">
+            <div class="card content-wrapper">
                 <div class="card-header">
                     <h3 class="card-title">Title</h3>
 

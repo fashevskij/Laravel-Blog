@@ -15,7 +15,7 @@
                 <div class="tm-bg-gray tm-video-details">
                     <h3 class="tm-text-gray-dark mb-3">Content</h3>
                     <p class="mb-4">
-                        {{$post->content}}
+                        {!! $post->content !!}
                     </p>
 
                     <div class="mb-4">
@@ -25,7 +25,7 @@
                     <div>
                         <h3 class="tm-text-gray-dark mb-3">Tags</h3>
                         @foreach($post->tags as $tag)
-                        <a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">{{$tag->title}}</a>
+                        <a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">{!! $tag->title !!}</a>
                         @endforeach
                     </div>
                 </div>

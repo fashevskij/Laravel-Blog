@@ -18,7 +18,9 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [\App\Http\Controllers\PostController::class, 'index'])->name('post.home');
-Route::get('/single/{id}', [\App\Http\Controllers\PostController::class, 'show'])->name('post.single');
+Route::get('/single/{slug}', [\App\Http\Controllers\PostController::class, 'show'])->name('post.single');
+Route::get('/category/{slug}', [\App\Http\Controllers\PostController::class, 'category'])->name('post.category');
+Route::get('/tag/{slug}', [\App\Http\Controllers\PostController::class, 'tags'])->name('post.tag');
 //группа роутов для админки
 //prefix - сокращение путей (автоматом доабвление admin перед путем)
 //name - имя группы , в данном примере admin. и для обращения к именам внутри группы можно исп аdmin.index например
